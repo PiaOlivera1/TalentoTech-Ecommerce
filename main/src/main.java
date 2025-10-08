@@ -24,6 +24,7 @@ public class main {
                 case 1 -> crearProducto(productosDB);
                 case 2 -> listarProductos(productosDB);
                 case 3 -> BusquedaPorNombre(productosDB);
+                case 4 -> EditarNombreProducto(productosDB);
 
             }
         }
@@ -66,13 +67,36 @@ public class main {
         nombre = nombre.trim().toLowerCase();
         for (String producto : productos){
             if (producto.toLowerCase().contains(nombre)){
-                System.out.println("*** Producto encontrado:");
+                System.out.println("*** Producto encontrado: ***");
                 System.out.println(producto);
                 encontrado = true;
             }
             if (!encontrado){
                 System.out.println("No se encontro ningún producto");
             }
+        }
+
+    }
+    public static void EditarNombreProducto(ArrayList<String>productos){
+        var entrada = new Scanner(System.in);
+        System.out.println("Ingrese el producto que desea reemplazar:");
+        var producto_existente = entrada.nextLine();
+        boolean encontrado = false;
+        producto_existente = producto_existente.trim().toLowerCase();
+        for (int i =0; i<productos.size(); i++){
+            String producto = productos.get(i);
+            if (producto.toLowerCase().contains(producto_existente)){
+                encontrado= true;
+                System.out.println("Ingrese el nuevo producto:");
+                var producto_reemplazado = entrada.nextLine();
+                productos.set(i, producto_reemplazado);
+                System.out.println("Producto reemplazado con Exito !!");
+                break;
+            }
+
+            }
+        if (!encontrado){
+            System.out.println("No se encontro producto");
         }
 
     }
