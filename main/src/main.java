@@ -9,7 +9,7 @@ public class main {
 
         System.out.println("*** Te damos la bienvenida a la app de compras ***");
         label:
-        while (true) {  //bucle infinito
+        while (true) {  // Bucle infinito: el menú se repite hasta que el usuario decida salir
             System.out.printf("""
                     Ingrese la opción deseada
                     0 - Finaliza el programa
@@ -19,12 +19,15 @@ public class main {
                     4 - Editar nombre producto
                     5 - Borrar producto
                     """);
-            opcion = entrada.nextInt();
+            opcion = entrada.nextInt();  // Leemos la opción elegida
+
             switch (opcion) {
                 case 1 -> crearProducto(productosDB);
                 case 2 -> listarProductos(productosDB);
                 case 3 -> BusquedaPorNombre(productosDB);
                 case 4 -> EditarNombreProducto(productosDB);
+                case 5 -> BorrarProducto(productosDB);
+
 
             }
         }
@@ -36,7 +39,7 @@ public class main {
         System.out.println("Creando nuevo producto ...");
         System.out.println("ingrese el nombre del producto: ");
         var nombre = entrada.nextLine();
-        productos.add(nombre);
+        productos.add(nombre);   // agregamos el producto a la lista
         System.out.println("Producto agregado con exito!!");
     }
 
@@ -45,13 +48,16 @@ public class main {
         System.out.println("***************************************");
         System.out.println("******* LISTADO DE PRODUCTOS **********");
         System.out.println("***************************************");
+
+        // Verificamos si la lista está vacía o es nula
         if (productos == null || productos.isEmpty())
         {
             System.out.println("No hay productos para mostrar");
         }
         else
         {
-            var contador = 1;
+            var contador = 1; // enumaromos los productos
+            //For-each: recorre la lista completa de productos
             for (String producto : productos) {
                 System.out.printf("%d - %s%n", contador, producto);
                 contador++;
@@ -63,7 +69,8 @@ public class main {
         var entrada = new Scanner(System.in);
         System.out.println("Ingrese el nombre del producto a buscar: ");
         var nombre = entrada.nextLine();
-        boolean encontrado = false;
+        boolean encontrado = false;  // bandera para saber si lo encontramos
+        // Limpiamos espacios y convertimos a minúscula para comparar sin errores
         nombre = nombre.trim().toLowerCase();
         for (String producto : productos){
             if (producto.toLowerCase().contains(nombre)){
@@ -71,9 +78,10 @@ public class main {
                 System.out.println(producto);
                 encontrado = true;
             }
-            if (!encontrado){
-                System.out.println("No se encontro ningún producto");
-            }
+
+        }
+        if (!encontrado){
+            System.out.println("No se encontro ningún producto");
         }
 
     }
@@ -82,16 +90,20 @@ public class main {
         System.out.println("Ingrese el producto que desea reemplazar:");
         var producto_existente = entrada.nextLine();
         boolean encontrado = false;
-        producto_existente = producto_existente.trim().toLowerCase();
-        for (int i =0; i<productos.size(); i++){
-            String producto = productos.get(i);
+        producto_existente = producto_existente.trim().toLowerCase();  /// Quitamos espacios y pasamos todo a minúscula para comparar sin errores
+        // Recorremos la lista completa de productos
+        for (int i =0; i<productos.size(); i++){  ///  size recorre el tamaño de la lista
+
+            String producto = productos.get(i); // obtenemos el producto actual en la posición i
+
+            // Convertimos a minúscula para comparar sin importar mayúsculas/minúsculas
             if (producto.toLowerCase().contains(producto_existente)){
                 encontrado= true;
                 System.out.println("Ingrese el nuevo producto:");
                 var producto_reemplazado = entrada.nextLine();
-                productos.set(i, producto_reemplazado);
+                productos.set(i, producto_reemplazado);  // Reemplazamos el producto anterior por el nuevo
                 System.out.println("Producto reemplazado con Exito !!");
-                break;
+                break;// salimos del for una vez hecho el cambio
             }
 
             }
@@ -99,6 +111,28 @@ public class main {
             System.out.println("No se encontro producto");
         }
 
+    }
+    public static void BorrarProducto(ArrayList<String> productos){
+        var entrada = new Scanner(System.in);
+        System.out.println("Ingrese el nombre del producto que desea eliminar: ");
+        var producto_existente = entrada.nextLine();
+        var encontrado = false;
+        producto_existente = producto_existente.trim().toLowerCase();
+        for (int i=0; i <productos.size(); i++){
+            String producto = productos.get(i);
+            if (!productos.isEmpty()){  // si el array no esta vacio entra al ciclo y busca el producto
+                if (producto.toLowerCase().equals(producto_existente)){ // Comparamos nombres exactamente iguales
+                    encontrado = true;
+                    productos.remove(i); // eliminamos el producto en la posición i
+                    System.out.println("Producto eliminado exitosamente");
+                    break;
+                }
+
+            }
+        }
+        if (!encontrado){
+            System.out.println("Producto inexistente");
+        }
     }
 
 
