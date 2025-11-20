@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class main {
@@ -5,6 +6,7 @@ public class main {
 
         ProductoService servicio = new ProductoService();
         Scanner entrada = new Scanner(System.in);
+        //int idSiguiente = productos.size()+1;
 
         System.out.println("*** Te damos la bienvenida a la app de compras ***");
 
@@ -29,6 +31,7 @@ public class main {
                 case 3 -> servicio.busquedaPorNombre();
                 case 4 -> servicio.editarNombreProducto();
                 case 5 -> servicio.borrarProducto();
+                default -> System.out.println("Opción inválida");
             }
         }
     }

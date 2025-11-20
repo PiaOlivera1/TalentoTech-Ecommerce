@@ -5,17 +5,25 @@ import java.util.Scanner;
 public class ProductoService {
 
         private ArrayList<Producto> productos;
+        private int idSiguiente;
         private Scanner entrada = new Scanner(System.in);
 
+
         public ProductoService() {
+
             productos = obtenerProductosTecnologicos();
+            idSiguiente = productos.size()+1;
         }
-    public void crearProducto()
+
+        public void crearProducto()
     { //método para crear el nuevo producto
         System.out.println("Creando nuevo producto ...");
         System.out.println("ingrese el nombre del producto: ");
         var nombre = entrada.nextLine();
-        productos.add(new Producto(nombre));   // agregamos el producto a la lista
+
+        productos.add(new Producto(idSiguiente,nombre));
+        idSiguiente++;// agregamos el producto a la lista
+
         System.out.println("Producto agregado con exito!!");
     }
 
@@ -40,12 +48,12 @@ public class ProductoService {
             }
         }
     }
-    public void busquedaPorNombre()
-    {
-        var entrada = new Scanner(System.in);
+    public void busquedaPorNombre() {
         System.out.println("Ingrese el nombre del producto a buscar: ");
         var nombre = entrada.nextLine();
-        boolean encontrado = false;  // bandera para saber si lo encontramos
+
+        boolean encontrado = false;  // bandera para saber si lo encontramos}
+
         // Limpiamos espacios y convertimos a minúscula para comparar sin errores
         nombre = nombre.trim().toLowerCase();
         for (Producto producto : productos){
@@ -72,6 +80,7 @@ public class ProductoService {
             if (p.getNombre().toLowerCase().contains(nombreBuscado)) {
                 System.out.print("Ingrese el nuevo nombre: ");
                 String nuevoNombre = entrada.nextLine();
+
                 p.setNombre(nuevoNombre);
                 System.out.println("Producto modificado con éxito!");
                 encontrado = true;
@@ -107,16 +116,16 @@ public class ProductoService {
     public static ArrayList<Producto> obtenerProductosTecnologicos() {
         ArrayList<Producto> productos = new ArrayList<>();
 
-        productos.add(new Producto("Laptop Lenovo ThinkPad X1 Carbon"));
-        productos.add(new Producto("Mouse inalámbrico Logitech MX Master 3"));
-        productos.add(new Producto("Teclado mecánico Razer BlackWidow V4"));
-        productos.add(new Producto("Monitor LG UltraWide 34 pulgadas"));
-        productos.add(new Producto("Smartphone Samsung Galaxy S23 Ultra"));
-        productos.add(new Producto("Tablet Apple iPad Pro 12.9"));
-        productos.add(new Producto("Disco duro externo Seagate 2TB"));
-        productos.add(new Producto("Memoria RAM Corsair Vengeance 16GB"));
-        productos.add(new Producto("Cargador inalámbrico Belkin Boost Up"));
-        productos.add(new Producto("Auriculares Bluetooth Sony WH-1000XM5"));
+        productos.add(new Producto(1,"Laptop Lenovo ThinkPad X1 Carbon"));
+        productos.add(new Producto(2,"Mouse inalámbrico Logitech MX Master 3"));
+        productos.add(new Producto(3,"Teclado mecánico Razer BlackWidow V4"));
+        productos.add(new Producto(4,"Monitor LG UltraWide 34 pulgadas"));
+        productos.add(new Producto(5,"Smartphone Samsung Galaxy S23 Ultra"));
+        productos.add(new Producto(6,"Tablet Apple iPad Pro 12.9"));
+        productos.add(new Producto(7,"Disco duro externo Seagate 2TB"));
+        productos.add(new Producto(8,"Memoria RAM Corsair Vengeance 16GB"));
+        productos.add(new Producto(9,"Cargador inalámbrico Belkin Boost Up"));
+        productos.add(new Producto(10,"Auriculares Bluetooth Sony WH-1000XM5"));
 
         return productos;
     }
