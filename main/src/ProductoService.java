@@ -112,20 +112,33 @@ public class ProductoService {
             System.out.println("Producto inexistente.");
         }
     }
+    public Producto obtenerProductoPorId(){
+        Scanner entrada = new Scanner(System.in);
+        System.out.println("Ingrese el id del producto: \n");
+        int idBuscado = entrada.nextInt();
+
+        for (Producto producto : productos){
+            if (producto.coincideId(idBuscado)){
+                return producto;
+            }
+        }
+        return null;
+
+    }
 
     public static ArrayList<Producto> obtenerProductosTecnologicos() {
         ArrayList<Producto> productos = new ArrayList<>();
 
-        productos.add(new Producto(1,"Laptop Lenovo ThinkPad X1 Carbon"));
-        productos.add(new Producto(2,"Mouse inalámbrico Logitech MX Master 3"));
-        productos.add(new Producto(3,"Teclado mecánico Razer BlackWidow V4"));
-        productos.add(new Producto(4,"Monitor LG UltraWide 34 pulgadas"));
-        productos.add(new Producto(5,"Smartphone Samsung Galaxy S23 Ultra"));
-        productos.add(new Producto(6,"Tablet Apple iPad Pro 12.9"));
-        productos.add(new Producto(7,"Disco duro externo Seagate 2TB"));
-        productos.add(new Producto(8,"Memoria RAM Corsair Vengeance 16GB"));
-        productos.add(new Producto(9,"Cargador inalámbrico Belkin Boost Up"));
-        productos.add(new Producto(10,"Auriculares Bluetooth Sony WH-1000XM5"));
+        productos.add(new Producto(1,"Laptop Lenovo ThinkPad X1 Carbon", 2000));
+        productos.add(new Producto(2,"Mouse inalámbrico Logitech MX Master 3",40));
+        productos.add(new Producto(3,"Teclado mecánico Razer BlackWidow V4",150));
+        productos.add(new Producto(4,"Monitor LG UltraWide 34 pulgadas",1500));
+        productos.add(new Producto(5,"Smartphone Samsung Galaxy S23 Ultra",900));
+        productos.add(new Producto(6,"Tablet Apple iPad Pro 12.9",2000));
+        productos.add(new Producto(7,"Disco duro externo Seagate 2TB",950));
+        productos.add(new Producto(8,"Memoria RAM Corsair Vengeance 16GB",350));
+        productos.add(new Producto(9,"Cargador inalámbrico Belkin Boost Up",80));
+        productos.add(new Producto(10,"Auriculares Bluetooth Sony WH-1000XM5",50));
 
         return productos;
     }

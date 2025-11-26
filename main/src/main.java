@@ -34,5 +34,9 @@ public class main {
                 default -> System.out.println("Opción inválida");
             }
         }
+
+        for (Producto producto : productos){
+            System.out.println(producto.toString());
+        }
     }
 }
