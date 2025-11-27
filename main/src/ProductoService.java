@@ -21,7 +21,7 @@ public class ProductoService {
         System.out.println("ingrese el nombre del producto: ");
         var nombre = entrada.nextLine();
 
-        productos.add(new Producto(idSiguiente,nombre));
+        productos.add(new Producto(nombre));
         idSiguiente++;// agregamos el producto a la lista
 
         System.out.println("Producto agregado con exito!!");
@@ -129,16 +129,16 @@ public class ProductoService {
     public static ArrayList<Producto> obtenerProductosTecnologicos() {
         ArrayList<Producto> productos = new ArrayList<>();
 
-        productos.add(new Producto(1,"Laptop Lenovo ThinkPad X1 Carbon", 2000));
-        productos.add(new Producto(2,"Mouse inalámbrico Logitech MX Master 3",40));
-        productos.add(new Producto(3,"Teclado mecánico Razer BlackWidow V4",150));
-        productos.add(new Producto(4,"Monitor LG UltraWide 34 pulgadas",1500));
-        productos.add(new Producto(5,"Smartphone Samsung Galaxy S23 Ultra",900));
-        productos.add(new Producto(6,"Tablet Apple iPad Pro 12.9",2000));
-        productos.add(new Producto(7,"Disco duro externo Seagate 2TB",950));
-        productos.add(new Producto(8,"Memoria RAM Corsair Vengeance 16GB",350));
-        productos.add(new Producto(9,"Cargador inalámbrico Belkin Boost Up",80));
-        productos.add(new Producto(10,"Auriculares Bluetooth Sony WH-1000XM5",50));
+        productos.add(new Producto("Laptop Lenovo ThinkPad X1 Carbon", 2000));
+        productos.add(new Producto("Mouse inalámbrico Logitech MX Master 3",40));
+        productos.add(new Producto("Teclado mecánico Razer BlackWidow V4",150));
+        productos.add(new Producto("Monitor LG UltraWide 34 pulgadas",1500));
+        productos.add(new Producto("Smartphone Samsung Galaxy S23 Ultra",900));
+        productos.add(new Producto("Tablet Apple iPad Pro 12.9",2000));
+        productos.add(new Producto("Disco duro externo Seagate 2TB",950));
+        productos.add(new Producto("Memoria RAM Corsair Vengeance 16GB",350));
+        productos.add(new Producto("Cargador inalámbrico Belkin Boost Up",80));
+        productos.add(new Producto("Auriculares Bluetooth Sony WH-1000XM5",50));
 
         return productos;
     }

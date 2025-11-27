@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class main {
-    public static void main(String[] args) {
+    public static void Main(String[] args) {
 
         ProductoService servicio = new ProductoService();
         Scanner entrada = new Scanner(System.in);
@@ -35,8 +35,17 @@ public class main {
             }
         }
 
+        //Producto mouse = new Producto("mouse logith", 10);
+
+
+        //ArrayList<Producto> productos = new ArrayList<>();
+    }
+        
+        public static void mostrarProductos(ArrayList<Producto> productos){
         for (Producto producto : productos){
             System.out.println(producto.toString());
         }
-    }
+
+
+        }
 }

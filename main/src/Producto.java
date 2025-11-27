@@ -3,14 +3,21 @@ public class Producto {
         private int id;
         private double precio;
 
-        public Producto(int id, String nombre, double precio) {
-            this.id = id;
-            this.nombre = nombre;
-            this.precio = precio;
+        private static int nextId =1; // solo se puede acceder desder la clase producto
+        // SIEMPRE ESTATICO!!!!
+
+        public Producto(String nombre, double precio) {
+           this(nombre);
+           this.precio = precio;
         }
 
-    public Producto(int idSiguiente, String nombre) {
+    public Producto(String nombre) {
+            this.id = nextId;
+            nextId++;
+            this.nombre = nombre;
     }
+
+
 
 
     public int getidProducto(){
@@ -35,11 +42,11 @@ public class Producto {
         @Override
         public String toString() {
 
-            return String.format("Id: %d - Articulo: %s - Precio: %.2f",id, nombre, precio);
+            return String.format("Id: %d - Articulo: %s - Precio: %.2f",this.id, this.nombre, this.precio);
         }
 
-        public boolean coincideId(int id){
-            return this.id ==id;
+        public boolean coincideId(int idBuscado){
+            return this.id == idBuscado;
         }
 
 
