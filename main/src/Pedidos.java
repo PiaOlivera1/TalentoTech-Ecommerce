@@ -3,30 +3,33 @@ import java.util.ArrayList;
 public class Pedidos {
 
     private int contadorProductos;
-    private ArrayList<Producto> productos;
+    private ArrayList<ProductoCarrito> productos;
 
     public Pedidos(){
         productos = new ArrayList<>();
     }
 
-    public void agregarProducto(Producto producto){
+    public void agregarProducto(ProductoCarrito producto){
         productos.add(producto);
     }
 
     public double calcularPrecioTotal(){
-        if (productos.isEmpty()) {
-            return 0;
-        }
         double total=0;
-        for (Producto producto : productos){
-            total += producto.getPrecio();
+
+        for (ProductoCarrito producto : productos){
+            //total += producto;
+            pause;
         }
         return total;
     }
 
-    public void listarProducto(){
-        for (Producto producto : productos){
-            System.out.println(producto);
+    public void listarProductos(){
+        if (productos.isEmpty()) {
+            System.out.println("No hay productos en el pedido");
+            return;
+        }
+        for (ProductoCarrito producto : productos){
+            System.out.println(producto.getNombre());
 
         }
     }
